@@ -12,6 +12,14 @@ CHIP HalfAdder {
     OUT sum,    // Right bit of a + b 
         carry;  // Left bit of a + b
 
+    // 1 + 1 = (0, 1)
+    // 1 + 0 = (1, 0)
+
     PARTS:
-    // Put you code here:
+        // Si son iguales a 1...
+        And(a=a, b=b, out=ayb);
+        Or(a=a, b=b, out=aob);
+
+        // Si son iguales a 1 aob va al carry 
+        DMux(in=aob, sel=ayb, a=sum, b=carry);
 }
