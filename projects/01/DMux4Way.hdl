@@ -16,11 +16,13 @@ CHIP DMux4Way {
     OUT a, b, c, d;
 
     PARTS:
-    // Put your code here:
-    DMux(in=in, sel=sel[0], a=a0, b=b0);
-    DMux(in=in, sel=sel[1], a=a1, b=b1);
-    And(a=a0,b=a1,out=a);
-    And(a=b0, b=a1, out=b);
-    And(a=a0, b=b1, out=c);
-    And(a=b0, b=b1, out=d);    
+        // Seleccionamos coords
+        DMux(in=in, sel=sel[0], a=a0, b=b0);
+        DMux(in=in, sel=sel[1], a=a1, b=b1);
+
+        // Colocamos de acuerdo a selección
+        And(a=a0, b=a1, out=a); // (sel= 00)
+        And(a=b0, b=a1, out=b); // (sel= 01)
+        And(a=a0, b=b1, out=c); // (sel= 10)
+        And(a=b0, b=b1, out=d); // (sel= 11)
 }

@@ -3,25 +3,25 @@
 ## Todo
 
 - [x] And.hdl
-- [ ] And16.hdl
+- [x] And16.hdl
 - [x] DMux.hdl
-- [ ] DMux4Way.hdl
-- [ ] DMux8Way.hdl
+- [x] DMux4Way.hdl
+- [x] DMux8Way.hdl
 - [x] Mux.hdl
-- [ ] Mux4Way16.hdl
-- [ ] Mux8Way16.hdl
-- [ ] Mux16.hdl
+- [x] Mux4Way16.hdl
+- [x] Mux8Way16.hdl
+- [x] Mux16.hdl
 - [x] Not.hdl
-- [ ] Not16.hdl
+- [x] Not16.hdl
 - [x] Or.hdl
-- [ ] Or8Way.hdl
-- [ ] Or16.hdl
+- [x] Or8Way.hdl
+- [x] Or16.hdl
 - [x] Eq.hdl (custom)
 - [x] Xor.hdl
 
-## Notes
+## Basic Gates
 
-## Not
+### Not
 
 ![Not Circuit](images/Not.png)
 
@@ -78,3 +78,17 @@ Output the value of `a` to `out` if `sel==0`; else in `b`
 Display `in` in `a` if `sel==0`; else in `b`
 
 `(A if sel == 0 else B) = in`
+
+## Multiple gates
+
+### And16
+
+16-bit `and` chip
+
+### Or16
+
+16-bit `or` chip
+
+### Not16
+
+16-bit `not` chip
