@@ -16,7 +16,8 @@
 - [x] Or.hdl
 - [ ] Or8Way.hdl
 - [ ] Or16.hdl
-- [ ] Xor.hdl
+- [x] Eq.hdl (custom)
+- [x] Xor.hdl
 
 ## Notes
 
@@ -31,6 +32,14 @@ Determines whether two given inputs are both 1 or not.
 Determines whether any of two given inputs is 1.
 
 `A + B`
+
+### Eq
+
+Yields 1 if both `a` and `b` are `0` or `1`. Thus, if a and b are equal.
+
+`AB + !A!B`
+
+Future notation: `==`
 
 ### Xor
 
