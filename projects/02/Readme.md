@@ -3,7 +3,7 @@
 ## Todo
 
 - [x] Add16.hdl
-- [ ] ALU.hdl
+- [x] ALU.hdl
 - [x] FullAdder.hdl
 - [x] HalfAdder.hdl
 - [x] Inc16.hdl

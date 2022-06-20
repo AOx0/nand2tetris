@@ -108,6 +108,7 @@ CHIP ALU {
         // zr and ng computation
             // Check whether all bits are 0
             Eq16Way(in=nores, va=zero, out=zr);
+            // Check if nores is negative
             Neg16(in=nores, out=ng);
 
 
