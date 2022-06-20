@@ -1,0 +1,48 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: Set16.hdl
+
+
+CHIP Set16 {
+    IN in[16], va;
+    OUT out[16];
+
+    PARTS:
+        And16(a=in, 
+            b[0]=va,
+            b[1]=va,
+            b[2]=va,
+            b[3]=va,
+            b[4]=va,
+            b[5]=va,
+            b[6]=va,
+            b[7]=va,
+            b[8]=va,
+            b[9]=va,
+            b[10]=va,
+            b[11]=va,
+            b[12]=va,
+            b[13]=va,
+            b[14]=va,
+            b[15]=va,
+            out=and
+        );
+
+        Or16(a=and, b[0]=va,
+            b[1]=va,
+            b[2]=va,
+            b[3]=va,
+            b[4]=va,
+            b[5]=va,
+            b[6]=va,
+            b[7]=va,
+            b[8]=va,
+            b[9]=va,
+            b[10]=va,
+            b[11]=va,
+            b[12]=va,
+            b[13]=va,
+            b[14]=va,
+            b[15]=va, out=out);
+}

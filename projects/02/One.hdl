@@ -1,0 +1,14 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: One.hdl
+
+
+CHIP One {
+    IN in;
+    OUT out;
+
+    PARTS:
+        Nand(a=in, b=in, out=nand);
+        Or(a=in, b=nand, out=out);
+}

@@ -1,0 +1,44 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: Eq16Way.hdl
+
+
+CHIP Eq16Way {
+    IN in[16], va;
+    OUT out;
+
+    PARTS:
+        Eq(a=va, b=in[0], out=o1);
+        Eq(a=va, b=in[1], out=o2);
+        Eq(a=va, b=in[2], out=o3);
+        Eq(a=va, b=in[3], out=o4);
+        Eq(a=va, b=in[4], out=o5);
+        Eq(a=va, b=in[5], out=o6);
+        Eq(a=va, b=in[6], out=o7);
+        Eq(a=va, b=in[7], out=o8);
+        Eq(a=va, b=in[8], out=o9);
+        Eq(a=va, b=in[9], out=o10);
+        Eq(a=va, b=in[10], out=o11);
+        Eq(a=va, b=in[11], out=o12);
+        Eq(a=va, b=in[12], out=o13);
+        Eq(a=va, b=in[13], out=o14);
+        Eq(a=va, b=in[14], out=o15);
+        Eq(a=va, b=in[15], out=o16);
+
+        And(a=o1, b=o2, out=oo1);
+        And(a=oo1, b=o3, out=oo2);
+        And(a=oo2, b=o4, out=oo3);
+        And(a=oo3, b=o5, out=oo4);
+        And(a=oo4, b=o6, out=oo5);
+        And(a=oo5, b=o7, out=oo6);
+        And(a=oo6, b=o8, out=oo7);
+        And(a=oo7, b=o9, out=oo8);
+        And(a=oo8, b=o10, out=oo9);
+        And(a=oo9, b=o11, out=oo10);
+        And(a=oo10, b=o12, out=oo11);
+        And(a=oo11, b=o13, out=oo12);
+        And(a=oo12, b=o14, out=oo13);
+        And(a=oo13, b=o15, out=oo14);
+        And(a=oo14, b=o16, out=out);
+}

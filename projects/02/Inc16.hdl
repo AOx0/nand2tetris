@@ -13,10 +13,6 @@ CHIP Inc16 {
     OUT out[16];
 
     PARTS:
-        // One
-        Nand(a=in[0], b=in[0], out=nand);
-        Or(a=in[0], b=nand, out=one);
-
-        // in + One
+        One(in=in[0], out=one);
         Add16(a=in, b[0]=one, out=out);
 }

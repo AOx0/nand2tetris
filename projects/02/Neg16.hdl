@@ -1,0 +1,15 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: Neg16.hdl
+
+
+CHIP Neg16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    One(in=in[15], out= one);
+    Eq (a= in[15], b=one, out = out);
+}

@@ -42,5 +42,75 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-   // Put you code here:
+        // Utils
+            // Const 1
+            One(in=zx, out=one);
+            // Const 0
+            Not(in=one, out=zero);
+
+        // x, y = 0
+            // Calculate a=0
+            Set16(in=x, va=zero, out=zeroset);
+
+
+        // if zx: x=0
+            // Check if zx == 1
+            Eq(a=zx, b=one, out=zxis1);
+            // Set x = 0 if zxis1
+            Mux16(a=x, b=zeroset, sel=zxis1, out=zxres);
+
+
+        // if nx: x=!x
+            // Check if nx == 1
+            Eq(a=nx, b=one, out=nxis1);
+            // Generate xnx = !x
+            Not16(in=zxres, out=xnx);
+            // Set x = xnx if nxis1
+            Mux16(a=zxres, b=xnx, sel=nxis1, out=nxres);
+
+
+        // if zy: y=0
+            // Check if zy == 1
+            Eq(a=zy, b=one, out=zyis1);
+            // Set y = 0 if zyis1
+            Mux16(a=y, b=zeroset, sel=zyis1, out=zyres);
+
+
+        // if ny: y=!y
+            // Check if ny == 1
+            Eq(a=ny, b=one, out=nyis1);
+            // Generate yny = !y
+            Not16(in=zyres, out=yny);
+            // Set y = yny if nyis1
+            Mux16(a=zyres, b=yny, sel=nyis1, out=nyres);
+
+
+        // out = if f (x + y) else (x & y)
+            // Check if f == 1
+            Eq(a=f, b=one, out=fis1);
+            // Calculate x + y
+            Add16(a=nyres, b=nxres, out=fresSum);
+            // Calculate x & y
+            And16(a=nyres, b=nxres, out=fresAnd);
+            // fresSum if fis1 else fresAnd
+            Mux16(a=fresAnd, b=fresSum, sel=fis1, out=fres);
+
+
+        //if no out = !out
+            // Check if no == 1
+            Eq(a=no, b=one, out=nois1);
+            // Calculate nfres = !fres
+            Not16(in=fres, out=nfres);
+            // Set out = fres if !nois1 else nfres
+            Mux16(a=fres, b=nfres, sel=nois1, out=nores);
+
+
+        // zr and ng computation
+            // Check whether all bits are 0
+            Eq16Way(in=nores, va=zero, out=zr);
+            Neg16(in=nores, out=ng);
+
+
+        // Output final result
+            Or16(a=nores, b=zeroset, out=out);
 }
