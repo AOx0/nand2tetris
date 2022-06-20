@@ -12,47 +12,39 @@
 // Set  R2 = 0
     @0
     D = A
-
     @R2
     M = D
 
 // Set Counter (R3) = R1
     @R1
     D = M
-
     @R3
     M = D
 
 // END if R1 <= 0
     @R1
     D = M
-
     @END
     D;JLE
 
 // END if R0 <= 0
     @R0
     D = M
-
     @END
     D;JLE
 
 (LOOP)
-    // Counter(R3)-=1
-        @R3
-        M = M - 1
-
     // R2+=R0
         @R0
         D = M
-
         @R2
         M = M + D
 
-    // Continue if Counter(R3)>0
+    // Counter (R3)-=1
         @R3
-        D = M
-
+        MD = M - 1
+        
+    // Continue while R3 > 0
         @LOOP 
         D;JGT
 (END)
