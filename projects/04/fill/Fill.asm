@@ -23,7 +23,7 @@
   0;JMP [ELSE]
   
   // Actual if-else 
-  (IF) // If key, set ARG = 1    
+  (IF) // If key, set ARG = 0    
       // Skip if ARG is already 0
       D = M [ ARG]
       D;JEQ [LOOP]
@@ -31,10 +31,9 @@
       D = A [   0]
       M = D [ ARG]
 
-      // "Call" Set 
-      0;JMP [SET]
+      0;JMP [SET] // Call SET
 
-  (ELSE) // Else set ARG = 0
+  (ELSE) // Else set ARG = 1 
       // Skip if ARG is already 1
       D = M [ ARG]
       D = D - 1
@@ -43,8 +42,7 @@
       D = A [   1]
       M = D [ ARG] 
       
-      // "Call" Set 
-      0;JMP [SET]
+      0;JMP [SET] // Call SET
     
 // Set "function"
 (SET)
@@ -53,23 +51,24 @@
     D = A   [SCREEN]
     M = D   [THIS]
 
-    // Set i (THAT) = 8192
+    // Set i (THAT) = 8192 (8Kib = 8192 bits)
     D = A   [8192]
     M = D   [THAT]
 
     (SETLOOP)
-      D = M [ ARG]
-      A = M [THIS]
-      M = D - 1 
-      
-      // i (THIS) += 1
-      MD = M + 1 [THIS]
-      // (THAT) -= 1
-      MD = M - 1 [THAT]
+        // Read ARG
+        D = M [ ARG]
+        A = M [THIS]
+        // Set SCREEN[i] = ARG (0 or -1)
+        M = D - 1 
+        
+        // i (THIS) += 1
+        M = M + 1 [THIS]
+        // (THAT) -= 1
+        MD = M - 1 [THAT]
 
-      // Continue while i () >= 0
-      D;JGE [SETLOOP]
+        // Continue while i () >= 0
+        D;JGE [SETLOOP]
       
-    // Go to LOOP 
     0;JMP [LOOP]
 
