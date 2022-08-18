@@ -10,41 +10,31 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Set  R2 = 0
-    @0
-    D = A
-    @R2
-    M = D
+    D = A [ 0]
+    M = D [R2]
 
 // Set Counter (R3) = R1
-    @R1
-    D = M
-    @R3
-    M = D
+    D = M [R1]
+    M = D [R3]
 
 // END if R1 <= 0
-    @R1
-    D = M
-    @END
-    D;JLE
+    D = M [ R1]
+    D;JLE [END]
 
 // END if R0 <= 0
-    @R0
-    D = M
-    @END
-    D;JLE
+    D = M [ R0]
+    D;JLE [END]
 
 (LOOP)
     // R2+=R0
-        @R0
-        D = M
-        @R2
-        M = M + D
+        D = M     [R0]
+        M = M + D [R2]
 
     // Counter (R3)-=1
-        @R3
-        MD = M - 1
+        MD = M - 1 [R3]
         
     // Continue while R3 > 0
-        @LOOP 
-        D;JGT
+        D;JGT [LOOP]
 (END)
+
+// 0;JMP [32766]
